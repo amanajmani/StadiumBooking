@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Chip, Card } from 'react-native-paper';
 
 import ActionCreators from '../actions';
 
@@ -14,6 +15,7 @@ class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text> What's up </Text>
+        <Chip icon="information" mode="outlined" onPress={() => console.log('Pressed')}>Example Chip</Chip>
       </View>
     );
   }
@@ -23,6 +25,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
   },
 });
 
