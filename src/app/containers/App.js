@@ -39,7 +39,7 @@ function App(props) {
   const getDate = () => {
     return calendarRef.current.getSelectedDate();
   }
-console.log(cartData.length.toString());
+
   return (
     <React.Fragment>
       <CalendarStrip
@@ -94,7 +94,7 @@ console.log(cartData.length.toString());
       style={styles.fab}
       icon="arrow-right"
       label={`${cartData.length.toString()} court hours`}
-      onPress={() => console.log('Pressed')}
+      onPress={() => props.navigation.navigate('Details')}
     />
 </React.Fragment>
   );
