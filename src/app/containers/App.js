@@ -9,6 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { Chip, Card } from 'react-native-paper';
+import CalendarStrip from 'react-native-calendar-strip';
 
 import ActionCreators from '../actions';
 
@@ -35,7 +36,17 @@ function App(props) {
 
   console.log('SELECTED', cartData);
   return (
-    <ScrollView style={styles.container}>
+    <View>
+      <CalendarStrip
+        calendarAnimation={{type: 'sequence', duration: 30}}
+        style={{height: 100, paddingTop: 20, paddingBottom: 10}}
+        dateNumberStyle={{color: '#d3d3d3'}}
+        dateNameStyle={{color: '#d3d3d3'}}
+        highlightDateNumberStyle={{color: 'black'}}
+        highlightDateNameStyle={{color: 'black'}}
+    />
+
+    <ScrollView >
       {timeDetails.map((time) => {
         return (
           <Card key={time} style={styles.card}>
@@ -70,6 +81,7 @@ function App(props) {
       })
       }
     </ScrollView>
+    </View>
   );
 }
 
