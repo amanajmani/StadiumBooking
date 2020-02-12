@@ -26,21 +26,14 @@ function App(props) {
     const key = time + court;
     if (isSelected[key]) {
       setIsSelected(prevState => ({ ...prevState, [key]: false}));
+      setCartData(cartData.filter(item => item.court !== court))
     } else {
       setIsSelected(prevState => ({ ...prevState, [key]: true}));
+      setCartData(prevState => [...prevState, {key, time, court}]);
     }
   }
 
-  const getCartFields = () =>{
-    for (let key in isSelected){
-      if(isSelected[key]){
-        cartValues.push(key);
-      }
-    }
-    return cartValues;
-  }
-
-  console.log('SELECTED', isSelected);
+  console.log('SELECTED', cartData);
   return (
     <ScrollView style={styles.container}>
       {timeDetails.map((time) => {
