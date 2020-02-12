@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -8,8 +8,9 @@ import {
   View,
   ScrollView,
 } from 'react-native';
-import { Chip, Card } from 'react-native-paper';
+import { Chip, Card, FAB } from 'react-native-paper';
 import CalendarStrip from 'react-native-calendar-strip';
+import Icon from 'react-native-vector-icons/Feather';
 
 import ActionCreators from '../actions';
 
@@ -34,10 +35,16 @@ function App(props) {
     }
   }
 
-  console.log('SELECTED', cartData);
+  const calendarRef = useRef();
+
+  const getDate = () => {
+    return calendarRef.current.getSelectedDate();
+  }
+
   return (
-    <View>
+    <React.Fragment>
       <CalendarStrip
+        ref={calendarRef}
         calendarAnimation={{type: 'sequence', duration: 30}}
         style={{height: 100, paddingTop: 20, paddingBottom: 10}}
         dateNumberStyle={{color: '#d3d3d3'}}
@@ -46,7 +53,8 @@ function App(props) {
         highlightDateNameStyle={{color: 'black'}}
     />
 
-    <ScrollView >
+    <ScrollView>
+      <View style={styles.scrollView}>
       {timeDetails.map((time) => {
         return (
           <Card key={time} style={styles.card}>
@@ -80,12 +88,32 @@ function App(props) {
         )
       })
       }
+      </View>
+       
     </ScrollView>
-    </View>
+    <FAB
+      style={styles.fab}
+      icon="arrow-right"
+      onPress={() => console.log('Pressed')}
+    />
+</React.Fragment>
   );
 }
 
 const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    paddingHorizontal: 20,
+  },
+  icon:{
+    color: 'blue',
+  },
+  scrollView:{
+    marginBottom: 110,
+  },
   container: {
     flex: 1,
   },
