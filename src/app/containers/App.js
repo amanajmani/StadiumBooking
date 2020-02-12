@@ -26,7 +26,7 @@ function App(props) {
     const key = time + court;
     if (isSelected[key]) {
       setIsSelected(prevState => ({ ...prevState, [key]: false}));
-      setCartData(cartData.filter(item => item.court !== court))
+      setCartData(cartData.filter(item => item.key !== key))
     } else {
       setIsSelected(prevState => ({ ...prevState, [key]: true}));
       setCartData(prevState => [...prevState, {key, time, court}]);
