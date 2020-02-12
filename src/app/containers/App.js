@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { Chip, Card, FAB } from 'react-native-paper';
 import CalendarStrip from 'react-native-calendar-strip';
-import Icon from 'react-native-vector-icons/Feather';
 
 import ActionCreators from '../actions';
 
@@ -40,7 +39,7 @@ function App(props) {
   const getDate = () => {
     return calendarRef.current.getSelectedDate();
   }
-
+console.log(cartData.length.toString());
   return (
     <React.Fragment>
       <CalendarStrip
@@ -94,6 +93,7 @@ function App(props) {
     <FAB
       style={styles.fab}
       icon="arrow-right"
+      label={`${cartData.length.toString()} court hours`}
       onPress={() => console.log('Pressed')}
     />
 </React.Fragment>
@@ -106,13 +106,12 @@ const styles = StyleSheet.create({
     margin: 16,
     right: 0,
     bottom: 0,
-    paddingHorizontal: 20,
   },
   icon:{
     color: 'blue',
   },
   scrollView:{
-    marginBottom: 110,
+    marginBottom: 40,
   },
   container: {
     flex: 1,
