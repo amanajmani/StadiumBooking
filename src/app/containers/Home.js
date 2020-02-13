@@ -1,7 +1,5 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import moment from 'moment';
 import {
   Text,
@@ -11,7 +9,6 @@ import {
 import { Chip, Card, FAB } from 'react-native-paper';
 import CalendarStrip from 'react-native-calendar-strip';
 
-import ActionCreators from '../actions';
 import styles from '../assets/styles/Home';
 
 const court = ['court 1', 'court 2', 'court 3', 'court 4', 'court 5'];
@@ -20,7 +17,7 @@ const timeDetails = ['06:00 AM', '07:00 AM', '08:00 AM',
 '09:00 AM','10:00 AM','11:00 AM','12:00 PM',
 '01:00 PM','02:00 PM','03:00 PM','04:00 PM'];
 
-function App(props) {
+function Home(props) {
   const [isSelected, setIsSelected] = useState({});
   const [cartData, setCartData] = useState([]);
   const [date, setDate] = useState([moment().format('dddd, MMMM Do YYYY')]);
@@ -52,7 +49,6 @@ function App(props) {
         highlightDateNumberStyle={{color: 'black'}}
         highlightDateNameStyle={{color: 'black'}}
         onDateSelected={date => setDate(date.format('dddd, MMMM Do YYYY'))}
-        // selectedDate={date => setDate(date)}
     />
 
     <ScrollView>
@@ -102,17 +98,4 @@ function App(props) {
   );
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ActionCreators, dispatch);
-}
-
-function mapStateToProps(state) {
-  return {
-    data: state.data,
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
+export default Home;
