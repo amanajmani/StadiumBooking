@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
+import styles from '../assets/styles/Cart';
 
 function Cart({ route }) {
   const { params } = route.params;
@@ -25,29 +26,5 @@ function Cart({ route }) {
     </React.Fragment>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    marginVertical: 10,
-    marginHorizontal: 20,
-    padding: 10,
-    borderRadius: 25,
-  },
-  cardContent: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  content: {
-    fontSize: 16,
-  },
-  header: {
-    fontSize: 15,
-    fontWeight: "bold",
-  },
-  conditionalHeader: {
-    textAlign: 'center',
-    marginVertical: 10,
-  },
-});
 
 export default Cart;
